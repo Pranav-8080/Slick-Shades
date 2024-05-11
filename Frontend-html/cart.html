@@ -49,7 +49,7 @@
         clearCartBtn.addEventListener('click', clearCart);
         checkoutBtn.addEventListener('click', handleCheckout);
     
-        cartItems.forEach(function(item) {
+        cartItems.forEach((item)=>{
             var li = document.createElement('li');
             var img = document.createElement('img');
             img.src = item.image;
