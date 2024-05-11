@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <title>Shopping Cart - Slick Shades</title>
+</head>
+<body>
+    <header>
+        <h1>Shopping Cart</h1>
+        <nav>
+            <ul>
+                <li><a href="frames.html">Frames</a></li>
+                <li><a href="sunglasses.html">Sunglasses</a></li>
+                <li><a href="main.html">Designer</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li class="sale"><a href="sale.html">Sale</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-items">
+            <h2>Cart Items</h2>
+            <ul id="cartList">
+               
+            </ul>
+            <button id="clearCartBtn">Clear Cart</button>
+            <button id="Chkoutbutton">Check Out</button>
+        </section>
+    </main>
+
+    <script>
+        var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+        var cartList = document.getElementById('cartList');
+        var clearCartBtn = document.getElementById('clearCartBtn');
+        var checkoutBtn = document.getElementById('Chkoutbutton');
+    
+        // Function to clear all items in the cart
+        function clearCart() {
+            localStorage.removeItem('cart');
+            cartList.innerHTML = ''; // Clear the cart list on the page
+        }
+    
+        // Function to handle checkout button click
+        function handleCheckout() {
+            window.location.href = 'form.html'; // Redirect to form.html
+        }
+    
+        clearCartBtn.addEventListener('click', clearCart);
+        checkoutBtn.addEventListener('click', handleCheckout);
+    
+        cartItems.forEach(function(item) {
+            var li = document.createElement('li');
+            var img = document.createElement('img');
+            img.src = item.image;
+            img.alt = item.name;
+            img.classList.add('product-image');
+            var detailsDiv = document.createElement('div');
+            detailsDiv.classList.add('product-details');
+            var nameHeading = document.createElement('h2');
+            nameHeading.textContent = item.name;
+            var pricePara = document.createElement('p');
+            pricePara.textContent = 'Price: ' + item.price;
+            detailsDiv.appendChild(nameHeading);
+            detailsDiv.appendChild(pricePara);
+            li.appendChild(img);
+            li.appendChild(detailsDiv);
+            cartList.appendChild(li);
+        });
+    </script>
+    
+</body>
+</html>
