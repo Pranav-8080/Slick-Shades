@@ -2,23 +2,23 @@ import mongoose from "mongoose";
 
 const shadesSchema = new mongoose.Schema({
     Name:{
-        type: 'string',
+        type: String,
         required: true
     },
     img:{
-        type: 'string',
+        type: String,
         required: true
     },
     itemID:{
-        type: 'string',
+        type: String,
         required: true
     },
     price:{
-        type: 'string',
+        type: String,
         required: true
     },
     category:{
-        type: 'string',
+        type: String,
         required: true
     }
 

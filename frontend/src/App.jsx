@@ -5,7 +5,6 @@ import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 import Frames from './components/Frames';
 import Sunglasses from "./components/Sunglasses"
 import Cart from "./components/Cart"
-import Sale from "./components/Sale"
 import Login from "./components/Login"
 import Designer from "./components/Designer";
 import Signup from "./components/Signup";

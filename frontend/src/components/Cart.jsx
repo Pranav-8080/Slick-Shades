@@ -28,7 +28,7 @@ const Cart = () => {
             <button id="Chkoutbutton" onClick={()=>navigate("/checkout")}>Check Out</button>
             <ul id="cartList">
                {cartItems && cartItems.map((i)=>(
-                <CartItem item={i}/>
+                <CartItem key={i.itemID} item={i}/>
                ))}
             </ul>
 

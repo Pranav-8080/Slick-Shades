@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 
 import userRoutes from "./routes/user.js"
 import shadesRouter from "./routes/shades.js"
+import orderRoute from "./routes/orders.js"
 
 const PORT = 3000;
 const mongoUrl = process.env.MONGO_URL 
@@ -30,7 +31,7 @@ mongoose
 
 app.use("/user",userRoutes)
 app.use("/shades",shadesRouter)
-
+app.use("/orders",orderRoute)
 
 app.listen(PORT,()=>{
     console.log(`listening on Port ${PORT}`)

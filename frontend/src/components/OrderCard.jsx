@@ -1,15 +1,20 @@
 import React from 'react'
 
-const OrderCard = ({firstname,lastname,img,mobile,address}) => {
+const OrderCard = ({firstname,lastname,Name,price,img,mobile,address}) => {
+  
+  const username = firstname + " " + lastname
+
   return (
-    <div style={{border:"1px solid black",display:"flex"}}>
-        <div className='img-section'>
+    <div>
+        <div className='img-section' >
             <img src={img} alt="ordered img" />
         </div>
         <div className='info'>
-            Order By:{firstname+" "+lastname} 
-            Mobile Number: {mobile}
-            Address: {address}
+            <p>Order By:{username} </p>
+            <p>Name:{Name}</p>
+            <p>Price: {price}</p>
+            <p>Mobile Number: {mobile}</p>
+            <p>Address: {address}</p>
         </div>
 
     </div>

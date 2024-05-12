@@ -1,32 +1,34 @@
 import mongoose from "mongoose";
+import { Shade } from "./shades.js";
+
 
 const orderSchema = new mongoose.Schema({
-    FirstName:{
-        type: 'string',
+    
+    firstName:{
+        type: String,
         required: true
     },
-    LastName:{
-        type: 'string',
+    lastName:{
+        type: String,
         required: true
     },
-    img:{
-        type: 'string',
+    cartItems:{
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Shade',
         required: true
     },
-    price:{
-        type: 'string',
-        required: true
-    },
-    mobile:{
-        type: 'string',
+    mobileNumber:{
+        type: String,
         required: true
     },
     address:{
-        type: 'string',
+        type: String,
         required: true
     },
     
-
 });
 
-export const Order = mongoose.model("Order",orderSchema)
+orderSchema.set('strictPopulate', false);
+
+
+export const Order = mongoose.model("Order", orderSchema);
