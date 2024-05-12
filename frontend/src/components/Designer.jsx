@@ -1,45 +1,36 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import ProductCard from './ProductCard';
 
 const Designer = () => {
+
+  const [designer,setDesigner] = useState()
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`${import.meta.env.VITE_SERVER_URL}/shades/designer`);
+      setDesigner(res.data.itemArr);
+      console.log(res.data.itemArr)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+
+    fetchData()
+    
+  }, [])
+
   return (
     <div>
-          <main>
-        <section className="product">
-            <div className="product-image">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.JQqrlLLLZ-EwREfowHkZdAHaE8&pid=Api&P=0&h=180" alt="Burberry"/>
-            </div>
-            <div className="product-details">
-                <h2>Burberry</h2>
-                <h5>BE 4291</h5>
-                <p>Price: 19,000/-</p>
-                <button>Add to Cart</button>
-            </div>
-        </section>
-
-        <section className="product">
-            <div className="product-image">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.jYamEZHXBF7lzW20SByuZQHaEo&pid=Api&P=0&h=180" alt="Balenciaga"/>
-            </div>
-            <div className="product-details">
-                <h2>Balenciaga</h2>
-                <h5>BG 0029</h5>
-                <p>Price: 26,700/-</p>
-                <button>Add to Cart</button>
-            </div>
-        </section>
-
-        <section className="product">
-            <div className="product-image">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.vABipcddz3E8UXpSqmXK-gHaEQ&pid=Api&P=0&h=180" alt="Gucci"/>
-            </div>
-            <div className="product-details">
-                <h2>Gucci</h2>
-                <h5>GG 0169</h5>
-                <p>Price: 15,169/-</p>
-                <button>Add to Cart</button>
-            </div>
-        </section>
-    </main>
+        <main>
+        {designer && designer.map((i)=>(
+                <ProductCard key={i.itemID} item={i} />
+            ))
+        }
+        </main>
     </div>
   )
 }
