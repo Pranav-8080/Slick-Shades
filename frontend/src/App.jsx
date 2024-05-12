@@ -11,6 +11,7 @@ import Designer from "./components/Designer";
 import Signup from "./components/Signup";
 import { createContext , useState} from "react";
 import CheckOutForm from "./components/CheckOutForm";
+import MyOrders from "./components/MyOrders";
 
 export const context = createContext({
   cartItems: [],
@@ -35,6 +36,7 @@ function App() {
             <Route path='/login' element={<Login/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/checkout" element={<CheckOutForm/>} />
+            <Route path="/myorders" element={<MyOrders/>} />
           </Routes>
           <Footer/>
 
