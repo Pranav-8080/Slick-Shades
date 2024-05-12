@@ -3,11 +3,8 @@ import { context } from '../App'
 import CartItem from './CartItem'
 import { useNavigate } from 'react-router-dom'
 
+
 const Cart = () => {
-  //delete later
-  const add = async()=>{
-    await axios.get(`${import.meta.env.VITE_SERVER_URL}/shades/add`)
-  }
 
 
   const navigate = useNavigate()
@@ -29,7 +26,6 @@ const Cart = () => {
             <h2>Cart Items</h2>            
             <button id="clearCartBtn" onClick={clearCart}>Clear Cart</button>
             <button id="Chkoutbutton" onClick={()=>navigate("/checkout")}>Check Out</button>
-            <button onClick={add}>add</button> {/*delete later*/}
             <ul id="cartList">
                {cartItems && cartItems.map((i)=>(
                 <CartItem item={i}/>
